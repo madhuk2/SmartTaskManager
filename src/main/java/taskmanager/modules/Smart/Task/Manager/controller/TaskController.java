@@ -1,13 +1,12 @@
 package taskmanager.modules.Smart.Task.Manager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 import taskmanager.modules.Smart.Task.Manager.dTO.TaskDetailsInput;
-import taskmanager.modules.Smart.Task.Manager.dTO.TaskDetailsOutput;
 import taskmanager.modules.Smart.Task.Manager.service.TaskDetailsService;
+
+import java.util.List;
 
 @RequestMapping("api/task")
 @RestController
@@ -15,8 +14,19 @@ public class TaskController {
     @Autowired
     TaskDetailsService taskDetailsService;
     @PostMapping("addOrUpdateTask")
-    public TaskDetailsOutput addOrUpdateTask(@RequestBody TaskDetailsInput taskDetailsInput)
+    public TaskDetailsInput addOrUpdateTask(@RequestBody TaskDetailsInput taskDetailsInput)
     {
         return taskDetailsService.addOrUpdateTask(taskDetailsInput);
     }
+    @GetMapping("getAllTasks")
+    public List<TaskDetailsInput> getAllTasks()
+    {
+        return taskDetailsService.getAllTasks();
+    }
+    @GetMapping("getTaskById")
+    public  TaskDetailsInput getTasksById(@Param("taskId") long taskId)
+    {
+        return taskDetailsService.getTaskById(taskId);
+    }
+
 }

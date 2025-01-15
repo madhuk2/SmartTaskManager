@@ -1,12 +1,13 @@
 package taskmanager.modules.Smart.Task.Manager.dTO;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 @Builder
 @Data
 @NoArgsConstructor
@@ -18,6 +19,7 @@ public class TaskDetailsInput {
     private int timeRequiredPerDay;
     private String startTime;
     private String endTime;
+    private String notification;
 
 
 }
