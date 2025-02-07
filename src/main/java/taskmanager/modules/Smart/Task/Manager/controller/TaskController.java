@@ -28,5 +28,12 @@ public class TaskController {
     {
         return taskDetailsService.getTaskById(taskId);
     }
+    @DeleteMapping("deleteTaskById")
+    public TaskDetailsInput deleteTaskById(@Param("taskId") long taskId)
+    {
+        return taskDetailsService.deleteTaskById(taskId);
+    }
+
+
 
 }

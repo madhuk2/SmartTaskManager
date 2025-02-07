@@ -26,5 +26,6 @@ public class TaskDetailsEntity {
     private int timeRequiredPerDay;
     private String startTime;
     private String endTime;
+    private boolean startedOrNot;
 
 }
